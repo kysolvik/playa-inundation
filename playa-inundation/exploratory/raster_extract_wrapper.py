@@ -10,7 +10,7 @@ import rasterio as rio
 
 shp = '../data/shapefiles/playa_v5_summary_atts/playa_v5_summary_atts.shp'
 raster_dir = '../data/landcover/wgs84/'
-output_csv = '../data/fraster_landcover_allyears.csv'
+output_csv = '../data/fraster_landcover_allyears_bigger.csv'
 radius = 200
 
 
@@ -36,7 +36,7 @@ def main():
         i = 0
         while i < playa_gdf.shape[0]:
             end = min(i+batch_size, playa_gdf.shape[0])
-            all_vals += fe.random_buffer(playa_gdf.iloc[i:end]['geometry'], ds, radius=radius, n_sample=1000, stat='count_dict')
+            all_vals += fe.random_buffer(playa_gdf.iloc[i:end]['geometry'], ds, radius=radius, n_sample=5000, stat='count_dict')
             i+=batch_size
         output_df['{}_r{}'.format(year, radius)] = all_vals
         print('Done: {}'.format(year))
