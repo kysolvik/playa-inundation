@@ -56,3 +56,14 @@ class ZOIBeta(ExponentialFamily):
         lp[torch.where(value == 0.)] = self.log_p[torch.where(value==0.)]
         lp[torch.where(value == 1.)] = self.log1m_p[torch.where(value==1.)] + self.log_q[torch.where(value==1.)]
         return lp
+
+
+def zoib_loss(t, y_true, pad=0.0001):
+    neg_log_probs = -1*ZOIBeta(
+        p=t[:,0]+pad,
+        q=t[:,1]+pad,
+        concentration1=t[:,2]+pad,
+        concentration0=t[:,3]+pad
+    ).log_prob(torch.tensor(y_true).float())
+    
+    return torch.mean(log_probs)
