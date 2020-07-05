@@ -64,7 +64,7 @@ def zoib_loss(t, y_true, pad=0.0001, return_mean=True):
         q=t[:,1],
         concentration1=t[:,2]+pad,
         concentration0=t[:,3]+pad
-    ).log_prob(y_true.float())
+    ).log_prob(y_true)
     
     if return_mean:
         return torch.mean(neg_log_probs)
