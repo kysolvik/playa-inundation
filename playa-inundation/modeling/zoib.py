@@ -58,12 +58,16 @@ class ZOIBeta(ExponentialFamily):
         return lp
 
 
-def zoib_loss(t, y_true, pad=0.0001):
+def zoib_loss(t, y_true, pad=0.0001, return_mean=True):
     neg_log_probs = -1*ZOIBeta(
-        p=t[:,0]+pad,
-        q=t[:,1]+pad,
-        concentration1=t[:,2]+pad,
-        concentration0=t[:,3]+pad
-    ).log_prob(y_true.float())
+        p=t[:,:, 0],
+        q=t[:,:,1],
+        concentration1=t[:,:,2]+pad,
+        concentration0=t[:,:,3]+pad
+    ).log_prob(y_true)
     
-    return torch.mean(neg_log_probs)
+    # Can set return_mean==False to debug all log probs
+    if return_mean:
+        return torch.mean(neg_log_probs)
+    else:
+        return neg_log_probs
