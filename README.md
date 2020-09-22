@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/265002033.svg)](https://zenodo.org/badge/latestdoi/265002033)
+
 # playa-inundation
 Exploring and modeling Playa Lake inundation
 
