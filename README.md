@@ -26,6 +26,7 @@ https://doi.org/10.6084/m9.figshare.13017650.v1
 
 #### Raw(ish) inputs:
 The raw data are available on AWS s3. You don't need to use any of these for the modeling itself, but if you would like to alter/recreate the preprocessing these are the base inputs:
+- s3://earthlab-ksolvik/playa/data/playa_nogeometry_whucs.csv: Playa attributes and lat/lon of center points.
 - s3://earthlab-ksolvik/playa/data/jrc-water_1984-2019.csv: Inundation data for all playas, all months
 - s3://earthlab-ksolvik/playa/data/prism.csv: Weather data for same time span (monthly precip, temp, and vpd)
 - s3://earthlab-ksolvik/playa/data/fraster_landcover_allyears_bigger.csv: Landcover fractions within 200m of playa centerpoints
@@ -41,7 +42,7 @@ playa-inundation/exploration contains several notebooks that may be useful for g
 playa-inundation/preprocessing contains notebooks, scripts, and modules used to prepare the data for modeling, . If you downloaded the hdf file, you don't need to run any of these preprocessing steps. 
 
 - *preprocess_split_data.ipynb*: Run first. Preprocesses the weather and inundation data and splits it by county and state csvs, which are more manageable.
-- *prep_dataloader.ipynb*: Run after. 
+- *prep_dataloader.ipynb*: Run after. Loads all the data and saves as hdf5.
 - *raster_extract_wrapper.py*: You can skip this script. Extracts the Sohl et al. land cover around each playa. The output is already available on s3 (fraster_landcover_allyears_bigger.csv).
 - *fraster_extract.py*: Python mmodule for performing the buffered extraction. Used by raster_extract_wrapper.py.
 
