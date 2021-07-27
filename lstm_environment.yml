@@ -1,9 +1,10 @@
-name: pytorch_latest_p36
+name: pytorch_latest_p36_playa
 channels:
   - pytorch
   - conda-forge
   - fastai
   - defaults
+  - pypi
 dependencies:
   - _libgcc_mutex=0.1=main
   - alabaster=0.7.12=py36_0
@@ -50,7 +51,7 @@ dependencies:
   - cytoolz=0.10.1=py36h7b6447c_0
   - dask=2.14.0=py_0
   - dask-core=2.14.0=py_0
-  - dataclasses=0.6=py36_0
+  - dataclasses=0.6
   - dbus=1.13.12=h746ee38_0
   - decorator=4.4.2=py_0
   - defusedxml=0.6.0=py_0
