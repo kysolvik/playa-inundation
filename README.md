@@ -22,7 +22,7 @@ The pre-processed data is publicly available on figshare (see below for details)
 
 #### Preprocessed model-ready data:
 The only input to the actual modeling code is an hdf5 file available on figshare. This is the **only** file you need to download to recreate the modeling:
-https://doi.org/10.6084/m9.figshare.13017650.v1
+https://doi.org/10.6084/m9.figshare.13017650.v2
 
 #### Raw(ish) inputs:
 The raw data are available on AWS s3. You don't need to use any of these for the modeling itself, but if you would like to alter/recreate the preprocessing these are the base inputs:
